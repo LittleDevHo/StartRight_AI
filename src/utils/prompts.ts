@@ -2,6 +2,7 @@ import { OpenAI } from "langchain/llms/openai";
 import { PromptTemplate } from "langchain/prompts";
 import type { ModelSettings } from "./types";
 import { GPT_35_TURBO } from "./constants";
+import { getInputValue } from "langchain/dist/memory/base";
 
 export const createModel = (settings: ModelSettings) => {
   let _settings: ModelSettings | undefined = settings;
@@ -28,6 +29,11 @@ export const executeTaskPrompt = new PromptTemplate({
     "You are an AI that creates business plans for startups. The main idea of a startup is `{goal}`. You have the following tasks `provide details {task} for {goal}`. Execute the task and return the response as a string.",
   inputVariables: ["goal", "task"],
 });
+
+export const translateTextPrompt = new PromptTemplate({
+  template: "You are an AI that translate text {input_language} to {output_language}. translate {text} from {input_language} to {output_language}",
+  inputVariables: ["text", "input_language", "output_language"],
+})
 
 export const createTasksPrompt = new PromptTemplate({
   template:
