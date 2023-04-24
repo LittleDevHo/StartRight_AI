@@ -36,54 +36,6 @@ async function executeTaskAgent(
   return completion.text as string;
 }
 
-// async function executeTaskAgent(
-//   modelSettings: ModelSettings,
-//   goal: string,
-//   task: string
-// ) {
-//   const ko = "Korean"
-//   const en = "English"
-
-//   const goal_translater = await new LLMChain({
-//     llm: createModel(modelSettings),
-//     prompt: translateTextPrompt,
-//   }).call({
-//     goal,
-//     ko,
-//     en,
-//   })
-
-//   const task_translater = await new LLMChain({
-//     llm: createModel(modelSettings),
-//     prompt: translateTextPrompt,
-//   }).call({
-//     task,
-//     ko,
-//     en,
-//   })
-
-//   const completion = await new LLMChain({
-//     llm: createModel(modelSettings),
-//     prompt: executeTaskPrompt,
-//   }).call({
-//     goal,
-//     task,
-//   });
-
-//   const result = completion.text as string
-
-//   const result_translater = await new LLMChain({
-//     llm: createModel(modelSettings),
-//     prompt: translateTextPrompt,
-//   }).call({
-//     result,
-//     en,
-//     ko,
-//   })
-
-//   return result_translater.text as string;
-// }
-
 async function createTasksAgent(
   modelSettings: ModelSettings,
   goal: string,
